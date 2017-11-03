@@ -1,13 +1,25 @@
 package exercise2;
 
 import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.zip.ZipOutputStream;
 
 public class Exercise2 {
-	public static void save(Classroom classroom, Path filePath) {
+	public static void save(Classroom classroom, Path filePath) throws IOException {
+		try (OutputStream output = Files.newOutputStream(filePath)) {
+
+			ObjectOutput objectOutput = new ObjectOutputStream(output);
+			objectOutput.writeObject(classroom);
+
+		}
+
+
 
 	}
 
